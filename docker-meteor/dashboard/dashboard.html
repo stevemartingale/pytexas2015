@@ -1,0 +1,58 @@
+<head>
+    <title>ACME Toy Factory</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <style type="text/css">
+    body {
+        font-family: "Gotham Narrow";
+    }
+    
+    .data-box {
+        background-color: #414a52;
+        color: #FFF;
+        border-width: -5px;
+        width: 24% !important;
+        margin: 5px;
+        padding: 15px !important;
+    }
+    
+    .data-name {
+        font-size: 2em;
+    }
+    
+    .data-value {
+        font-size: 2em;
+    }
+    </style>
+</head>
+
+<body style="background-color:#EAEAEA;">
+    <div class="container-fluid">
+        <div class="page-header text-center">
+            <h1><u>ACME Toy Factory Production Dashboard</u></h1>
+            <h3>An experiment in buzzword abuse with Kafka, Storm, Meteor, MongoDB, Flask</h3>
+        </div>
+        <div class="row">
+            {{#each toys}}
+            <div class="col-md-3 data-box">
+                <div class="row">
+                    <div class="col-sm-12 text-center" style="">
+                        <h2>Machine - {{machineId}}</h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-8 data-name text-left" style="">
+                        Count:</div>
+                    <div class="col-sm-4 text-right data-value">
+                        <span class="label label-info">{{count}}</span></div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-8 data-name text-left" style="">
+                        Temp:</div>
+                    <div class="col-sm-4 text-right data-value" style="">
+                        <span class="label {{getColor temperature}}">{{temperature}} &deg;C</span></div>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+</body>

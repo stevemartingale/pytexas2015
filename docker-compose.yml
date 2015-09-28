@@ -1,0 +1,28 @@
+api:
+  build: ./flask-app
+  ports:
+   - "5000:5000"
+  links:
+   - kafka
+meteor:
+  build: ./docker-meteor
+  links:
+  - mongo
+  ports:
+    - "3000:3000"
+storm:
+  build: ./docker-storm
+  links:
+  - kafka
+  - mongo
+kafka:
+  build: ./docker-kafka-master/kafka
+  ports:
+    - "9092:9092"
+mongo:
+  build: ./docker-mongo
+  environment: 
+    - AUTH=no
+  ports:
+    - "27017:27017"
+    - "28017:28017"
